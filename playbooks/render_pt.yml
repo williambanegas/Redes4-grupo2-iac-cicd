@@ -16,7 +16,7 @@
 
     - name: Generar archivo de configuracion del Switch
       ansible.builtin.template:
-        src: ../templates/switch_c9200l.j2
+        src: templates/switch_c9200l.j2
         dest: ../rendered/switch_pt.cfg
         mode: "0644"
 
@@ -26,6 +26,6 @@
 
     - name: Generar archivo de configuracion del Router
       ansible.builtin.template:
-        src: ../templates/router_c8200l.j2
+        src: templates/router_c8200l.j2
         dest: ../rendered/router_pt.cfg
         mode: "0644"

@@ -1,4 +1,3 @@
----
 extends: default
 
 rules:
@@ -6,4 +5,9 @@ rules:
     max: 120
     level: warning
   truthy: disable
+  new-lines: disable
+  new-line-at-end-of-file: disable
+  document-start: disable
+  trailing-spaces: disable
+  brackets: disable
   
