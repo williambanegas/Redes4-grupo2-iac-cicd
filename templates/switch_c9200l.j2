@@ -1,0 +1,16 @@
+hostname {{ device_hostname }}
+!
+{% for intf in access_interfaces %}
+interface {{ intf.name }}
+ description {{ intf.description }}
+ switchport mode access
+ switchport access vlan {{ intf.vlan }}
+ no shutdown
+!
+{% endfor %}
+router ospf {{ ospf.process_id }}
+ router-id {{ ospf.router_id }}
+{% for net in ospf.networks %}
+ network {{ net.network }} {{ net.wildcard }} area {{ net.area }}
+{% endfor %}
+!

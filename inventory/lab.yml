@@ -1,0 +1,11 @@
+---
+all:
+  children:
+    routers:
+      hosts:
+        c8200l:
+          ansible_host: 192.168.10.1
+    switches:
+      hosts:
+        c9200l:
+          ansible_host: 192.168.10.2
