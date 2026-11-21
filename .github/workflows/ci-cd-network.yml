@@ -1,8 +1,9 @@
+---
 name: CI/CD Redes - Grupo 2
 
 on:
   pull_request:
-    branches: [ main ]
+    branches: [main]
   workflow_dispatch:
 
 jobs:
