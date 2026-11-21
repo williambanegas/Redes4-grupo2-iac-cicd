@@ -19,9 +19,10 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Instalar yamllint y ansible-lint
+      - name: Instalar yamllint, ansible-lint y coleccion cisco.ios
         run: |
           pip install yamllint ansible-lint
+          ansible-galaxy collection install cisco.ios
 
       - name: Ejecutar yamllint
         run: yamllint .
