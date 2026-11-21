@@ -17,3 +17,5 @@ Gestión automatizada de un router **Cisco Catalyst C8200L** y un switch **Cisco
    export CISCO_USER="usuario"
    export CISCO_PASS="password"
    export CISCO_ENABLE_PASS="enable_password"
+
+<!-- Prueba de pipeline CI -->
