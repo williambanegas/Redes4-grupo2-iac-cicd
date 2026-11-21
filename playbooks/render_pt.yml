@@ -1,0 +1,31 @@
+---
+- name: Generar archivos de configuracion para Packet Tracer
+  hosts: localhost
+  gather_facts: false
+
+  tasks:
+    - name: Crear carpeta de salida
+      ansible.builtin.file:
+        path: ../rendered
+        state: directory
+        mode: "0755"
+
+    - name: Cargar variables del Switch y renderizar plantilla
+      ansible.builtin.include_vars:
+        file: ../group_vars/switches.yml
+
+    - name: Generar archivo de configuracion del Switch
+      ansible.builtin.template:
+        src: ../templates/switch_c9200l.j2
+        dest: ../rendered/switch_pt.cfg
+        mode: "0644"
+
+    - name: Cargar variables del Router y renderizar plantilla
+      ansible.builtin.include_vars:
+        file: ../group_vars/routers.yml
+
+    - name: Generar archivo de configuracion del Router
+      ansible.builtin.template:
+        src: ../templates/router_c8200l.j2
+        dest: ../rendered/router_pt.cfg
+        mode: "0644"

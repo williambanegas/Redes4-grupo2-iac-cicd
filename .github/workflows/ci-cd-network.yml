@@ -1,0 +1,48 @@
+name: CI/CD Redes - Grupo 2
+
+on:
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  lint_and_validate:
+    name: CI - Validacion de sintaxis (yamllint y ansible-lint)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clonar repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Instalar yamllint y ansible-lint
+        run: |
+          pip install yamllint ansible-lint
+
+      - name: Ejecutar yamllint
+        run: yamllint .
+
+      - name: Ejecutar ansible-lint
+        run: ansible-lint playbooks/
+
+  deploy_manual:
+    name: CD - Despliegue manual aprobado por el docente
+    needs: lint_and_validate
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    environment: produccion-lab
+
+    steps:
+      - name: Clonar repositorio
+        uses: actions/checkout@v4
+
+      - name: Confirmar aprobacion y registrar despliegue
+        run: |
+          echo "Despliegue aprobado por el docente."
+          echo "Ejecutar en estacion de trabajo del lab:"
+          echo "ansible-playbook -i inventory/lab.yml playbooks/switch.yml"
+          echo "ansible-playbook -i inventory/lab.yml playbooks/router.yml"

@@ -1,0 +1,10 @@
+---
+- name: Configurar Router Cisco Catalyst C8200L
+  hosts: routers
+  gather_facts: false
+
+  tasks:
+    - name: Aplicar plantilla Jinja2 (hostname, interfaces y OSPF)
+      cisco.ios.ios_config:
+        src: ../templates/router_c8200l.j2
+        save_when: modified
