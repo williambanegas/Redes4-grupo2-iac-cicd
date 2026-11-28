@@ -16,8 +16,13 @@
 
     - name: Generar archivo de configuracion del Switch
       ansible.builtin.template:
+<<<<<<< HEAD
         src: \"{{ playbook_dir }}/../templates/router_c8200l.j2\"
         dest: \"{{ playbook_dir }}/../rendered/router_pt.cfg\"
+=======
+        src: templates/switch_c9200l.j2
+        dest: ../rendered/switch_pt.cfg
+>>>>>>> origin/main
         mode: "0644"
 
     - name: Cargar variables del Router y renderizar plantilla
@@ -26,6 +31,12 @@
 
     - name: Generar archivo de configuracion del Router
       ansible.builtin.template:
+<<<<<<< HEAD
         src: "{{ playbook_dir }}/../templates/router_c8200l.j2"
         dest: "{{ playbook_dir }}/../rendered/router_pt.cfg"
         mode: "0644"
+=======
+        src: templates/router_c8200l.j2
+        dest: ../rendered/router_pt.cfg
+        mode: "0644"
+>>>>>>> origin/main
